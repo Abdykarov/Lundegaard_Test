@@ -6,6 +6,7 @@ import cz.abdykili.lundegaard.model.response.ContactFormResponseDto;
 import cz.abdykili.lundegaard.service.imp.ContactFormServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -18,17 +19,17 @@ public class ContactFormController {
     private final ContactFormServiceImp contactFormService;
 
     @PostMapping
-    public ContactFormResponse saveContactForm(@Valid @RequestBody ContactFormRequestDto contactFormRequestDto){
+    public ContactFormResponse saveContactForm(@Valid @RequestBody ContactFormRequestDto contactFormRequestDto) {
         return contactFormService.saveContactForm(contactFormRequestDto);
     }
 
     @GetMapping
-    public List<ContactFormResponseDto> findAllContactForms(){
+    public List<ContactFormResponseDto> findAllContactForms() {
         return contactFormService.findAllContactForms();
     }
 
     @GetMapping("{id}")
-    public ContactFormResponseDto findContactForm(@PathVariable Long id){
+    public ContactFormResponseDto findContactForm(@PathVariable Long id) {
         return contactFormService.findContactForm(id);
     }
 

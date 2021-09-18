@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class ContactFormNotFoundException extends AppRequestException{
+public class ContactFormNotFoundException extends AppRequestException {
     private final String message;
     private final HttpStatus httpStatus;
 

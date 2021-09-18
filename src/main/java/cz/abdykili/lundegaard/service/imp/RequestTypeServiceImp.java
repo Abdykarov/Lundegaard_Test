@@ -12,22 +12,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class RequestTypeServiceImp implements RequestTypeService{
+public class RequestTypeServiceImp implements RequestTypeService {
 
     private final RequestTypeRepository requestTypeRepository;
     private final RequestTypeMapper requestTypeMapper;
 
     @Override
     public RequestTypeResponseDto saveRequestType(RequestTypeRequestDto requestTypeRequestDto) {
-        if(requestTypeRepository.existsByRequestTypeName(requestTypeRequestDto.getRequestTypeName())){
+        if (requestTypeRepository.existsByRequestTypeName(requestTypeRequestDto.getRequestTypeName())) {
             throw new RuntimeException("Request type with this name already exists");
         }
         final RequestTypeEntity requestTypeEntity = requestTypeMapper.toEntity(requestTypeRequestDto);

@@ -4,12 +4,13 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RequestTypeEntity extends AbstractDateEntity{
-    @Column(unique=true)
+public class RequestTypeEntity extends AbstractDateEntity {
+    @Column(unique = true)
     String requestTypeName;
 }

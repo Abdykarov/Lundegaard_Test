@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AppRequestException extends RuntimeException{
+public class AppRequestException extends RuntimeException {
     final String message;
     final HttpStatus httpStatus;
 }

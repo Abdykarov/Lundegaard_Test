@@ -1,7 +1,6 @@
 package cz.abdykili.lundegaard.validation;
 
 import javax.validation.ConstraintValidator;
-
 import javax.validation.ConstraintValidatorContext;
 
 public class ContactSurnameValidator implements ConstraintValidator<ContactSurnameConstraint, String> {

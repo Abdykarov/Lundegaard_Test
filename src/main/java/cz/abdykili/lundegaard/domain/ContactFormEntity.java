@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ContactFormEntity extends AbstractDateEntity{
+public class ContactFormEntity extends AbstractDateEntity {
     @PolicyNumberConstraint
     @NotBlank
     String policyNumber;

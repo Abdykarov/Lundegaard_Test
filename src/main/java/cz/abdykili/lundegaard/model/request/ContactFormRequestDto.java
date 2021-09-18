@@ -1,6 +1,5 @@
 package cz.abdykili.lundegaard.model.request;
 
-import cz.abdykili.lundegaard.domain.RequestTypeEntity;
 import cz.abdykili.lundegaard.validation.ContactNameConstraint;
 import cz.abdykili.lundegaard.validation.ContactSurnameConstraint;
 import cz.abdykili.lundegaard.validation.PolicyNumberConstraint;

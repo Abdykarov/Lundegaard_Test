@@ -1,15 +1,11 @@
 package cz.abdykili.lundegaard.controller;
 
-import cz.abdykili.lundegaard.model.request.ContactFormRequestDto;
 import cz.abdykili.lundegaard.model.request.RequestTypeRequestDto;
-import cz.abdykili.lundegaard.model.response.ContactFormResponse;
-import cz.abdykili.lundegaard.model.response.ContactFormResponseDto;
 import cz.abdykili.lundegaard.model.response.RequestTypeResponseDto;
 import cz.abdykili.lundegaard.service.imp.RequestTypeServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -21,17 +17,17 @@ public class RequestTypeController {
     private final RequestTypeServiceImp requestTypeService;
 
     @PostMapping
-    public RequestTypeResponseDto saveRequestType(@RequestBody RequestTypeRequestDto requestTypeRequestDto){
+    public RequestTypeResponseDto saveRequestType(@RequestBody RequestTypeRequestDto requestTypeRequestDto) {
         return requestTypeService.saveRequestType(requestTypeRequestDto);
     }
 
     @GetMapping
-    public List<RequestTypeResponseDto> findAllRequestTypes(){
+    public List<RequestTypeResponseDto> findAllRequestTypes() {
         return requestTypeService.findAllRequestTypes();
     }
 
     @GetMapping("{id}")
-    public RequestTypeResponseDto findRequestType(@PathVariable Long id){
+    public RequestTypeResponseDto findRequestType(@PathVariable Long id) {
         return requestTypeService.findRequestType(id);
     }
 }

@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +35,7 @@ public class ContactFormServiceImp implements ContactFormService {
         final ContactFormEntity contactFormEntity = contactFormMapper.toEntity(contactFormRequestDto);
         final Long requestTypeId = contactFormRequestDto.getRequestTypeId();
         final RequestTypeEntity requestTypeEntity = requestTypeRepository.findById(requestTypeId)
-                .orElseThrow(() -> new RequestTypeNotFoundException(String.format("Request type with id %s not found",requestTypeId),
+                .orElseThrow(() -> new RequestTypeNotFoundException(String.format("Request type with id %s not found", requestTypeId),
                         HttpStatus.NOT_FOUND));
         contactFormEntity.setRequestType(requestTypeEntity);
         final ContactFormEntity save = contactFormRepository.save(contactFormEntity);
@@ -48,7 +47,7 @@ public class ContactFormServiceImp implements ContactFormService {
     @Transactional(readOnly = true)
     public ContactFormResponseDto findContactForm(Long id) {
         final ContactFormEntity contactFormEntity = contactFormRepository.findById(id)
-                .orElseThrow(() -> new ContactFormNotFoundException(String.format("Contact form with id %s not found",id),
+                .orElseThrow(() -> new ContactFormNotFoundException(String.format("Contact form with id %s not found", id),
                         HttpStatus.NOT_FOUND));
         final ContactFormResponseDto response = contactFormMapper.toDtoResponse(contactFormEntity);
 
@@ -61,7 +60,7 @@ public class ContactFormServiceImp implements ContactFormService {
 
         final List<ContactFormEntity> contactFormEntityList = contactFormRepository.findAll();
 
-        final  List<ContactFormResponseDto> responseList = contactFormEntityList.stream()
+        final List<ContactFormResponseDto> responseList = contactFormEntityList.stream()
                 .map(contact -> contactFormMapper.toDtoResponse(contact))
                 .collect(Collectors.toList());
 

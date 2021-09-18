@@ -8,4 +8,5 @@ public class PolicyNumberValidator implements ConstraintValidator<PolicyNumberCo
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
         return s.matches("^[a-zA-Z0-9]*$");
-    }}
+    }
+}
