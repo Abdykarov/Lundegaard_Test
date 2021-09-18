@@ -42,6 +42,7 @@ const Form = observer(() => {
             })
             .then(responseData => {
                 console.log(responseData);
+                window.location.href = "/"
                 return responseData;})
             .catch(err => {
                 alert("fetch error" + err);
