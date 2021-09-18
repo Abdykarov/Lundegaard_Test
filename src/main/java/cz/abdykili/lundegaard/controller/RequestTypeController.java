@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/request-types/")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 public class RequestTypeController {
 
     private final RequestTypeServiceImp requestTypeService;

@@ -46,7 +46,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
 
 
     @ExceptionHandler(AppRequestException.class)
-    public ResponseEntity<Object> handleItaException(AppRequestException e, ServletWebRequest webRequest) {
+    public ResponseEntity<Object> handleAppException(AppRequestException e, ServletWebRequest webRequest) {
         log.error("An error ocurred while processing request " +
                 webRequest.getRequest().getMethod() + " at " +
                 webRequest.getRequest().getRequestURI(), e);
