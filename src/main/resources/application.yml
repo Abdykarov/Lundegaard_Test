@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:1331/lundegaard
+    username: test
+    password: test
+  application:
+    name: lundegaard
