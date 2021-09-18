@@ -1,5 +1,6 @@
-package cz.abdykili.lundegaard.domain;
+package cz.abdykili.lundegaard.model.request;
 
+import cz.abdykili.lundegaard.domain.RequestTypeEntity;
 import cz.abdykili.lundegaard.validation.ContactNameConstraint;
 import cz.abdykili.lundegaard.validation.ContactSurnameConstraint;
 import cz.abdykili.lundegaard.validation.PolicyNumberConstraint;
@@ -7,18 +8,16 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
-@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ContactFormEntity extends AbstractDateEntity{
-    @PolicyNumberConstraint
+public class ContactFormRequestDto {
+
     @NotBlank
+    @PolicyNumberConstraint
     String policyNumber;
     @NotBlank
     @ContactNameConstraint
@@ -27,9 +26,9 @@ public class ContactFormEntity extends AbstractDateEntity{
     @ContactSurnameConstraint
     String surname;
     @NotBlank
-    @Column(length = 512)
+    @Size(max = 512)
     String requestMessage;
-    @ManyToOne
-    @JoinColumn(name = "request_type_id")
-    RequestTypeEntity requestType;
+    @NotNull
+    Long requestTypeId;
+
 }

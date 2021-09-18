@@ -1,7 +1,8 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+    show-sql: false
   datasource:
     url: jdbc:postgresql://localhost:1331/lundegaard
     username: test

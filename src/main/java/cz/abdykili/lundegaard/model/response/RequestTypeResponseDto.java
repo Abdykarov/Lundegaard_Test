@@ -1,15 +1,13 @@
-package cz.abdykili.lundegaard.domain;
+package cz.abdykili.lundegaard.model.response;
+
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
-
-@Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RequestTypeEntity extends AbstractDateEntity{
-    @Column(unique=true)
+public class RequestTypeResponseDto {
+    Long id;
     String requestTypeName;
 }
