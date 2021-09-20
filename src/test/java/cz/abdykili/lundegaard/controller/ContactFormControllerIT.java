@@ -32,7 +32,7 @@ public class ContactFormControllerIT implements WithAssertions {
                 .setRequestMessage("message")
                 .setSurname("Sika");
 
-        final ResponseEntity<ContactFormResponse> response = testRestTemplate.postForEntity("/api/v1/contact-forms/",contactFormRequestDto, ContactFormResponse.class);
+        final ResponseEntity<ContactFormResponse> response = testRestTemplate.postForEntity("/api/v1/contact-forms/", contactFormRequestDto, ContactFormResponse.class);
 
         //act
         final ContactFormResponse body = response.getBody();
@@ -59,7 +59,7 @@ public class ContactFormControllerIT implements WithAssertions {
         SoftAssertions.assertSoftly(softAssertions -> {
             softAssertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             softAssertions.assertThat(body).isNotNull();
-            softAssertions.assertThat(body).hasSize(1);
+            softAssertions.assertThat(body).hasSizeGreaterThan(1);
         });
     }
 

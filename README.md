@@ -26,6 +26,13 @@ via maven start up spring boot application
 ./mvnw spring-boot:run
 ```
 
+prerequisites
+
+```bash
+Node js - minimal version - v12.22.5
+Npm version - 7.5.2
+```
+
 To launch react client, install npm packages and start react app
 
 ```bash
@@ -33,3 +40,10 @@ cd client
 npm install
 npm start
 ```
+
+Swagger OpenAPI url
+
+```bash
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+```
+

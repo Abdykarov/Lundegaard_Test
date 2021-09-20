@@ -5,7 +5,7 @@ services:
     container_name: lundegaard
     image: library/postgres:13.1
     ports:
-      - "1331:5432"
+      - "5432:5432"
     environment:
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=test

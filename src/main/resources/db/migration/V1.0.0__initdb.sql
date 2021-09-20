@@ -19,8 +19,8 @@ create table request_type_entity
     primary key (id)
 );
 alter table if exists request_type_entity
-    drop constraint if exists UK_t1urhanqgjryacc9ofjfxyx49;
+    drop constraint if exists UQ_request_type_entity_name;
 alter table if exists request_type_entity
-    add constraint UK_t1urhanqgjryacc9ofjfxyx49 unique (request_type_name);
+    add constraint UQ_request_type_entity_name unique (request_type_name);
 alter table if exists contact_form_entity
-    add constraint FKkb372ke66q6uo0uidpqejj68 foreign key (request_type_id) references request_type_entity;
+    add constraint FK_contract_form_entity_request_type foreign key (request_type_id) references request_type_entity;

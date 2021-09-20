@@ -1,13 +1,11 @@
 package cz.abdykili.lundegaard.service;
 
-import cz.abdykili.lundegaard.domain.ContactFormEntity;
 import cz.abdykili.lundegaard.domain.RequestTypeEntity;
 import cz.abdykili.lundegaard.mapper.RequestTypeMapper;
 import cz.abdykili.lundegaard.model.request.RequestTypeRequestDto;
-import cz.abdykili.lundegaard.model.response.ContactFormResponseDto;
 import cz.abdykili.lundegaard.model.response.RequestTypeResponseDto;
 import cz.abdykili.lundegaard.repository.RequestTypeRepository;
-import cz.abdykili.lundegaard.service.imp.RequestTypeServiceImp;
+import cz.abdykili.lundegaard.service.impl.RequestTypeServiceImpl;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class RequestTypeServiceImpTest {
+class RequestTypeServiceImplTest {
 
     @Mock
     private RequestTypeRepository requestTypeRepository;
@@ -33,7 +31,7 @@ class RequestTypeServiceImpTest {
     private RequestTypeMapper requestTypeMapper;
 
     @InjectMocks
-    private RequestTypeServiceImp requestTypeService;
+    private RequestTypeServiceImpl requestTypeService;
 
 
     @Test

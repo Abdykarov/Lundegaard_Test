@@ -1,4 +1,4 @@
-package cz.abdykili.lundegaard.service.imp;
+package cz.abdykili.lundegaard.service.impl;
 
 import cz.abdykili.lundegaard.domain.ContactFormEntity;
 import cz.abdykili.lundegaard.domain.RequestTypeEntity;
@@ -20,27 +20,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Contact form service implementation class can be used to save contact form.
- * Also provides methods for fetching existing entities from database.
- */
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ContactFormServiceImp implements ContactFormService {
+public class ContactFormServiceImpl implements ContactFormService {
 
     private final ContactFormRepository contactFormRepository;
     private final RequestTypeRepository requestTypeRepository;
     private final ContactFormMapper contactFormMapper;
 
-    /**
-     * Save new contact form into database.
-     * Throws request not found exception when request type id doesnt exist in db.
-     *
-     * @param contactFormRequestDto - Request dto class contains information about form, should be transformed to entity class
-     * @return id of new created entity
-     */
     @Override
+    @Transactional
     public ContactFormResponse saveContactForm(ContactFormRequestDto contactFormRequestDto) {
         log.info("Saving a new contact form");
         log.debug("Saving a new contact form | Incoming request dto - {}", contactFormRequestDto);
@@ -52,20 +43,14 @@ public class ContactFormServiceImp implements ContactFormService {
 
         log.info("Saving a new contact form | Request type name - {}", requestTypeEntity.getRequestTypeName());
         contactFormEntity.setRequestType(requestTypeEntity);
-        final ContactFormEntity save = contactFormRepository.save(contactFormEntity);
-        log.info("Saving a new contact form | Dto successfully uploaded to database");
-        final ContactFormResponse response = contactFormMapper.toResponse(save);
+        contactFormRepository.save(contactFormEntity);
+        log.info("Saving a new contact form | Entity successfully uploaded to database");
+        final ContactFormResponse response = contactFormMapper.toResponse(contactFormEntity);
         log.debug("Saving a new contact form | Incoming payload {}, outgoing payload {} ", contactFormRequestDto, response);
+
         return response;
     }
 
-    /**
-     * Find contact form entity by id.
-     * Throws contact form not found exception when id doesnt exist in database.
-     *
-     * @param id - id of contact form, placed in db
-     * @return - contact form dto with full information about form
-     */
     @Override
     @Transactional(readOnly = true)
     public ContactFormResponseDto findContactForm(Long id) {
@@ -80,20 +65,13 @@ public class ContactFormServiceImp implements ContactFormService {
         return response;
     }
 
-
-    /**
-     * Fetch all contact form entities from db.
-     * Transform entity to response dto.
-     *
-     * @return list of contact form response dtos
-     */
     @Override
     @Transactional(readOnly = true)
     public List<ContactFormResponseDto> findAllContactForms() {
         log.info("Fetching all contact forms");
         final List<ContactFormEntity> contactFormEntityList = contactFormRepository.findAll();
         final List<ContactFormResponseDto> responseList = contactFormEntityList.stream()
-                .map(contact -> contactFormMapper.toDtoResponse(contact))
+                .map(contactFormMapper::toDtoResponse)
                 .collect(Collectors.toList());
         log.debug("Fetching all contact forms | Outgoing list {} ", responseList);
 

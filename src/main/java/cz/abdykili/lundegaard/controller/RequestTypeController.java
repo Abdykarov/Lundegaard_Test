@@ -2,7 +2,7 @@ package cz.abdykili.lundegaard.controller;
 
 import cz.abdykili.lundegaard.model.request.RequestTypeRequestDto;
 import cz.abdykili.lundegaard.model.response.RequestTypeResponseDto;
-import cz.abdykili.lundegaard.service.imp.RequestTypeServiceImp;
+import cz.abdykili.lundegaard.service.impl.RequestTypeServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @CrossOrigin
 public class RequestTypeController {
 
-    private final RequestTypeServiceImp requestTypeService;
+    private final RequestTypeServiceImpl requestTypeService;
 
     @PostMapping
     public RequestTypeResponseDto saveRequestType(@RequestBody RequestTypeRequestDto requestTypeRequestDto) {

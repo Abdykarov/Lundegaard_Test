@@ -58,7 +58,7 @@ public class RequestTypeControllerIT implements WithAssertions {
         SoftAssertions.assertSoftly(softAssertions -> {
             softAssertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             softAssertions.assertThat(body).isNotNull();
-            softAssertions.assertThat(body).hasSize(4);
+            softAssertions.assertThat(body).hasSizeGreaterThan(3);
         });
     }
 

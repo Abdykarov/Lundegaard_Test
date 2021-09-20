@@ -13,6 +13,6 @@ public class ContactSurnameValidator implements ConstraintValidator<ContactSurna
      */
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return s.matches("[a-zA-Z]+");
+        return s.matches("[A-Z][a-z]+");
     }
 }

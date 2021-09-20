@@ -9,7 +9,7 @@ import cz.abdykili.lundegaard.model.response.ContactFormResponse;
 import cz.abdykili.lundegaard.model.response.ContactFormResponseDto;
 import cz.abdykili.lundegaard.repository.ContactFormRepository;
 import cz.abdykili.lundegaard.repository.RequestTypeRepository;
-import cz.abdykili.lundegaard.service.imp.ContactFormServiceImp;
+import cz.abdykili.lundegaard.service.impl.ContactFormServiceImpl;
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ContactFormServiceImpTest implements WithAssertions {
+class ContactFormServiceImplTest implements WithAssertions {
 
     @Mock
     private ContactFormRepository contactFormRepository;
@@ -39,7 +39,7 @@ class ContactFormServiceImpTest implements WithAssertions {
     private ContactFormMapper contactFormMapper;
 
     @InjectMocks
-    private ContactFormServiceImp contactFormService;
+    private ContactFormServiceImpl contactFormService;
 
     @Test
     void saveContactForm() {
